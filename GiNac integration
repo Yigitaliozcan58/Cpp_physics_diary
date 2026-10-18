@@ -1,0 +1,23 @@
+void integration_1(){
+    double Y;
+    double X;
+    std:: string function;  
+    std::cout << "Please enter equation"<<std::endl;
+    std::cin >> function;
+    symtab table;
+    parser reader(table);  // which will take inputted function and tell computer this is symbol not string according to Ginac
+    ex parser_expression=reader(function);
+    
+    ex x = symbol("x");
+    ex t = symbol("t");
+    table["x"]=x;
+    table ["t"]=t;
+    ex result_exp = integral(t,0,x,x);
+    std::cout<< result_exp.eval_integ()<<std::endl; // this part will reveal integral in symbols but because GiNac allows only pollynomial integrals
+
+    std::cout << "write max limits"<< std::endl;
+    std::cin>>X;
+    std::cout << "write min limit"<< std::endl;
+    std::cin>>Y;
+    ex results_numerical = integral(x,Y,X,x+5); 
+    std::cout<<results_numerical.evalf()<< std::endl;} // according to GiNac library .evalf() function in numeriacl
