@@ -1,3 +1,11 @@
+#include <iostream>
+#include <cmath>
+#include <ginac/ginac.h>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace GiNaC;
+
 void integration_1(){
     double Y;
     double X;
